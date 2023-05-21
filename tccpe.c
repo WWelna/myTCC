@@ -307,9 +307,9 @@ static const DWORD pe_sec_flags[] = {
     0x60000020, /* ".text"     , */
     0xC0000040, /* ".data"     , */
     0xC0000080, /* ".bss"      , */
-    0x40000040, /* ".idata"    , */
+    0xC0000040, /* ".idata"    , */
     0x40000040, /* ".pdata"    , */
-    0xE0000060, /* < other >   , */
+    0xC0000060, /* < other >   , */
     0x40000040, /* ".rsrc"     , */
     0x42000802, /* ".stab"     , */
     0x42000040, /* ".reloc"    , */
@@ -551,7 +551,7 @@ static int pe_write(struct pe_info *pe)
 #else
     0x010B, /*WORD    Magic; */
 #endif
-    0x06, /*BYTE    MajorLinkerVersion; */
+    0x00, /*BYTE    MajorLinkerVersion; */
     0x00, /*BYTE    MinorLinkerVersion; */
     0x00000000, /*DWORD   SizeOfCode; */
     0x00000000, /*DWORD   SizeOfInitializedData; */
@@ -569,11 +569,11 @@ static int pe_write(struct pe_info *pe)
 #endif
     0x00001000, /*DWORD   SectionAlignment; */
     0x00000200, /*DWORD   FileAlignment; */
-    0x0004, /*WORD    MajorOperatingSystemVersion; */
+    0x0005, /*WORD    MajorOperatingSystemVersion; */
     0x0000, /*WORD    MinorOperatingSystemVersion; */
-    0x0000, /*WORD    MajorImageVersion; */
+    0x0001, /*WORD    MajorImageVersion; */
     0x0000, /*WORD    MinorImageVersion; */
-    0x0004, /*WORD    MajorSubsystemVersion; */
+    0x0005, /*WORD    MajorSubsystemVersion; */
     0x0000, /*WORD    MinorSubsystemVersion; */
     0x00000000, /*DWORD   Win32VersionValue; */
     0x00000000, /*DWORD   SizeOfImage; */
